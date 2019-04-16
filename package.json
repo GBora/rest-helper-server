@@ -1,0 +1,26 @@
+{
+  "name": "rest-helper-server",
+  "version": "0.0.1",
+  "description": "A server written in node to help with learning front end frameworks.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GBora/rest-helper-server.git"
+  },
+  "keywords": [
+    "REST",
+    "Node"
+  ],
+  "author": "George Bora <gpbora@Gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GBora/rest-helper-server/issues"
+  },
+  "homepage": "https://github.com/GBora/rest-helper-server#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
