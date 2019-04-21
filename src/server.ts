@@ -1,12 +1,13 @@
 // External depencies
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
 // Internal depencies
-let api = require('./api');
+import APIRouter from './api/APIRouter';
 
 let app = express();
-require('dotenv').config();
+dotenv.config();
 
-app.use('/api', api);
+app.use('/api', APIRouter);
 
 app.listen(process.env.PORT, () => {
     console.log(`App is online at http://localhost:${process.env.PORT}/`);
