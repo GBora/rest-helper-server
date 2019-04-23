@@ -4,8 +4,13 @@ import CarsAPI from './CarsAPI';
 let CarsRouter = express.Router({mergeParams: true});
 
 CarsRouter.route('/all')
-          .get((req, res) => {
-            res.send(CarsAPI.getAll())
+          .get(async (req, res) => {
+            try {
+              let cars = await CarsAPI.getAll();
+              res.send()
+            } catch {
+              res.sendStatus(500);
+            }
           })
 
 export default CarsRouter;
