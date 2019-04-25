@@ -14,7 +14,7 @@ let APIRouter = express.Router({mergeParams: true});
  */
 APIRouter.get('/status', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
-    res.send({'up': true})
+    res.send({'is_up': true})
 });
 
 APIRouter.use('/cars', CarsRouter);

@@ -27,12 +27,9 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options);
 
-// app.get('/api-docs.json', (req, res) => {
-//     res.setHeader('Content-Type', 'application/json');
-//     res.send(swaggerSpec);
-// });
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+// End of documentation
 
 app.use('/api', APIRouter);
 

@@ -27,11 +27,8 @@ const options = {
     apis: ['./src/**/*.ts'],
 };
 const swaggerSpec = swagger_jsdoc_1.default(options);
-// app.get('/api-docs.json', (req, res) => {
-//     res.setHeader('Content-Type', 'application/json');
-//     res.send(swaggerSpec);
-// });
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
+// End of documentation
 app.use('/api', APIRouter_1.default);
 app.listen(process.env.PORT, () => {
     console.log(`App is online at http://localhost:${process.env.PORT}/`);

@@ -2,5 +2,5 @@
 
 To Do List
 
-* add documentation
+* make db stuff run
 * add testing
