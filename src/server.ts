@@ -34,6 +34,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api', APIRouter);
 
 app.listen(process.env.PORT, () => {
-    console.log(`App is online at http://localhost:${process.env.PORT}/`);
+    console.log(`App is online at http://localhost:${process.env.PORT}/ \n Swagger is available at http://localhost:${process.env.PORT}/api-docs`);
 })
 

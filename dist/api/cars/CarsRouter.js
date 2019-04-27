@@ -15,10 +15,22 @@ const express_1 = __importDefault(require("express"));
 const CarsAPI_1 = __importDefault(require("./CarsAPI"));
 let CarsRouter = express_1.default.Router({ mergeParams: true });
 CarsRouter.route('/all')
+    /**
+     * @swagger
+     * /cars/all:
+     *   get:
+     *     description: Returns all of the cars
+     *     responses:
+     *       200:
+     *         cars: array of cars
+     *       500:
+     *         error: an error
+     */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
         let cars = yield CarsAPI_1.default.getAll();
-        res.send();
+        console.log('cars', cars);
+        res.send(cars);
     }
     catch (_a) {
         res.sendStatus(500);

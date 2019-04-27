@@ -31,6 +31,6 @@ app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.de
 // End of documentation
 app.use('/api', APIRouter_1.default);
 app.listen(process.env.PORT, () => {
-    console.log(`App is online at http://localhost:${process.env.PORT}/`);
+    console.log(`App is online at http://localhost:${process.env.PORT}/ \n Swagger is available at http://localhost:${process.env.PORT}/api-docs`);
 });
 //# sourceMappingURL=server.js.map
