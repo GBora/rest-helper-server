@@ -29,10 +29,41 @@ CarsRouter.route('/all')
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
         let cars = yield CarsAPI_1.default.getAll();
-        console.log('cars', cars);
         res.send(cars);
     }
     catch (_a) {
+        res.sendStatus(500);
+    }
+}));
+CarsRouter.route('/:id')
+    /**
+     * @swagger
+     * /cars/id:
+     *   get:
+     *     description: Returns a car by it's id
+     *     responses:
+     *       200:
+     *         car: an car
+     *       500:
+     *         error: an error
+     */
+    .get((req, res) => __awaiter(this, void 0, void 0, function* () {
+    if (!req.params.id) {
+        res.status(400).send('ID required');
+    }
+    if (!Number.parseInt(req.params.id, 10)) {
+        res.status(400).send('ID needs to be number');
+    }
+    try {
+        let car = yield CarsAPI_1.default.getById(req.params.id);
+        if (car) {
+            res.send(car);
+        }
+        else {
+            res.send(404);
+        }
+    }
+    catch (_b) {
         res.sendStatus(500);
     }
 }));

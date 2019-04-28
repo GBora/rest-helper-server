@@ -16,6 +16,16 @@ class CarsAPI {
             });
         });
     }
+    static getById(id) {
+        return new Promise((resolve, reject) => {
+            db.get(`SELECT * FROM CARS WHERE  ID = ${id}`, (err, row) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(row);
+            });
+        });
+    }
 }
 exports.default = CarsAPI;
 //# sourceMappingURL=CarsAPI.js.map
