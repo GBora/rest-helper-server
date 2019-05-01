@@ -1,6 +1,7 @@
 import express from 'express';
 import CarsRouter from './cars/CarsRouter';
 import UsersRouter from './users/UsersRouter';
+import TodosRouter from './todos/TodosRouter';
 
 let APIRouter = express.Router({mergeParams: true});
 
@@ -11,7 +12,8 @@ let APIRouter = express.Router({mergeParams: true});
  *     description: Returns if the api is up or not
  *     responses:
  *       200:
- *         description: Boolean indicating if api is up or not
+ *         content:
+ *           description: Boolean indicating if api is up or not
  */
 APIRouter.get('/status', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
@@ -20,5 +22,6 @@ APIRouter.get('/status', (req, res) => {
 
 APIRouter.use('/cars', CarsRouter);
 APIRouter.use('/users', UsersRouter);
+APIRouter.use('/todos', TodosRouter);
 
 export default APIRouter;

@@ -13,6 +13,16 @@ It contains the following collections of endpoints:
 * statuses (if you need to receive a particular status code) NOT STARTED
 * delays (if you need to test what happens when the backend has delays or randomly crashes) NOT STARTED
 
+* Instalation and geting started
+
+Just clone this and be sure you're on the `master` branch, then run `npm install` after everithing is completed run `npm start` to start the server and the typescript compilation.
+
+You should see in the console that the API itself is up on http://localhost:9010 and the swagger is on http://localhost:9010/api-docs .
+
+The port mentioned is just the default it can be changed from the `.env` file.
+
+The database is a SQLite database and can be found in the `db` folder.
+
 ## Built with 
 
 * Node
