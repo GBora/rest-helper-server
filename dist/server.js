@@ -8,6 +8,7 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const body_parser_1 = __importDefault(require("body-parser"));
 // Internal depencies
 const APIRouter_1 = __importDefault(require("./api/APIRouter"));
 let app = express_1.default();
@@ -29,6 +30,7 @@ const options = {
 const swaggerSpec = swagger_jsdoc_1.default(options);
 app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
 // End of documentation
+app.use(body_parser_1.default.json());
 app.use('/api', APIRouter_1.default);
 app.listen(process.env.PORT, () => {
     console.log(`App is online at http://localhost:${process.env.PORT}/ \n Swagger is available at http://localhost:${process.env.PORT}/api-docs`);

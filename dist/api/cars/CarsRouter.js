@@ -19,12 +19,17 @@ CarsRouter.route('/all')
      * @swagger
      * /cars/all:
      *   get:
-     *     description: Returns all of the cars
+     *     description: Returns all of the cars.
      *     responses:
      *       200:
-     *         cars: array of cars
+     *         description: An array of cars.
+     *         content:
+      *         application/json:
+        *          schema:
+        *            type: array
+        *            items: objects
      *       500:
-     *         error: an error
+     *         description: Unexpected error
      */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
@@ -37,16 +42,23 @@ CarsRouter.route('/all')
 }));
 CarsRouter.route('/:id')
     /**
-     * @swagger
-     * /cars/id:
-     *   get:
-     *     description: Returns a car by it's id
-     *     responses:
-     *       200:
-     *         car: an car
-     *       500:
-     *         error: an error
-     */
+    * @swagger
+    * /cars/id:
+    *   get:
+    *     description: Returns a car by it's id
+    *     produces:
+    *       - application/json
+    *     parameters:
+    *       - name: id
+    *         description: The car's id.
+    *         required: true
+    *         type: int
+    *     responses:
+    *       200:
+    *         car: an car
+    *       500:
+    *         error: an error
+    */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.params.id) {
         res.status(400).send('ID required');

@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import bodyParser from 'body-parser';
 // Internal depencies
 import APIRouter from './api/APIRouter';
 
@@ -31,6 +32,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // End of documentation
 
+app.use(bodyParser.json());
 app.use('/api', APIRouter);
 
 app.listen(process.env.PORT, () => {
