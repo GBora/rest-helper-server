@@ -56,6 +56,7 @@ CarsRouter.route('/:id')
             if (!Number.parseInt(req.params.id, 10)) {
               res.status(400).send('ID needs to be number')
             }
+            
             try {
               let car = await CarsAPI.getById(req.params.id);
               if (car) {
