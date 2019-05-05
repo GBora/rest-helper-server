@@ -28,7 +28,13 @@ class TodosAPI {
     }
     static create(newTodo) {
         return new Promise((resolve, reject) => {
-            resolve(true);
+            db.run(`INSERT INTO TODOS (TEXT, DONE) VALUES ("${newTodo}", 0)`, (err) => {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                }
+                resolve(true);
+            });
         });
     }
     static update(newData, id) {
@@ -38,7 +44,14 @@ class TodosAPI {
     }
     static deleteById(id) {
         return new Promise((resolve, reject) => {
-            resolve(true);
+            db.run(`DELETE FROM TODOS WHERE ID = ${id}`, (err) => {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(true);
+                }
+            });
         });
     }
 }

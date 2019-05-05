@@ -23,7 +23,7 @@ The port mentioned is just the default it can be changed from the `.env` file.
 
 The database is a SQLite database and can be found in the `db` folder.
 
-## Built with 
+## Built with
 
 * Node
 * Express
@@ -32,9 +32,14 @@ The database is a SQLite database and can be found in the `db` folder.
 * Swagger (for documenting the end points)
 * Jest (unit testing)
 
-## License 
+## License
 
 MIT
+
+## Custom commands
+
+`npm start`:  begins both a compilation of the typescript sources to javascript and runs the compiled javascript
+so that the server is up, once this command runs your code will recompile and the server will restart.
 
 ## To Do List
 

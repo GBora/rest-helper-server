@@ -61,6 +61,34 @@ TodosRouter.route('/item/:id')
     catch (_b) {
         res.status(500).send('Could not fetch todo.');
     }
+}))
+    .delete((req, res) => __awaiter(this, void 0, void 0, function* () {
+    if (!req.params.id) {
+        res.status(400).send('Invalid request an id needs to be present');
+    }
+    if (!Number.parseInt(req.params.id, 10)) {
+        res.status(400).send('Invalid request an id needs to be an integer');
+    }
+    try {
+        let result = yield TodosAPI_1.default.deleteById(req.params.id);
+        res.status(200).send('Todo deleted');
+    }
+    catch (_c) {
+        res.status(500).send('Could not delete');
+    }
+}));
+TodosRouter.route('/new')
+    .post((req, res) => __awaiter(this, void 0, void 0, function* () {
+    if (!req.body.text && req.body.text.length > 1) {
+        res.status(400).send('Property "text" required for end point ');
+    }
+    try {
+        yield TodosAPI_1.default.create(req.body.text);
+        res.status(200).send('Todo created');
+    }
+    catch (_d) {
+        res.status(500).send('Could not create');
+    }
 }));
 exports.default = TodosRouter;
 //# sourceMappingURL=TodosRouter.js.map

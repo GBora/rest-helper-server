@@ -44,6 +44,7 @@ TodosRouter.route('/item/:id')
                 if (!Number.parseInt(req.params.id, 10)) {
                     res.status(400).send('Invalid request an id needs to be an integer')
                 }
+
                 try {
                     let todo = await TodosAPI.getById(req.params.id);
                     res.status(200).send(todo);
@@ -51,5 +52,34 @@ TodosRouter.route('/item/:id')
                     res.status(500).send('Could not fetch todo.')
                 }
            })
+           .delete(async (req, res) => {
+                if (!req.params.id) {
+                    res.status(400).send('Invalid request an id needs to be present')
+                }
+
+                if (!Number.parseInt(req.params.id, 10)) {
+                    res.status(400).send('Invalid request an id needs to be an integer')
+                }
+
+                try {
+                    let result = await TodosAPI.deleteById(req.params.id);
+                    res.status(200).send('Todo deleted');
+                } catch {
+                    res.status(500).send('Could not delete');
+                }
+           });
+
+TodosRouter.route('/new')
+            .post(async (req, res) => {
+                if (!req.body.text && req.body.text.length > 1) {
+                    res.status(400).send('Property "text" required for end point ')
+                }
+                try {
+                    await TodosAPI.create(req.body.text);
+                    res.status(200).send('Todo created');
+                } catch {
+                    res.status(500).send('Could not create');
+                }
+            })
 
 export default TodosRouter;
