@@ -9,7 +9,7 @@ It contains the following collections of endpoints:
 * cars (to suply cars to try out building a products/product view) IN PROGRESS
 * users (to allow to test out various login/logout/signup etc scenarios) IN PROGRESS
 * messages (to try and build out a messager type application) NOT STARTED
-* to-do's (a back-end for the classical learning example) NOT STARTED
+* to-do's (a back-end for the classical learning example) DONE EXCEPT SWAGGER
 * statuses (if you need to receive a particular status code) NOT STARTED
 * delays (if you need to test what happens when the backend has delays or randomly crashes) NOT STARTED
 

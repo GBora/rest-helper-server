@@ -43,7 +43,7 @@ TodosRouter.route('/item/:id')
      *    description: Return all todos
      *    responses:
      *      200:
-     *        description: An array of all todo
+     *        description: An single todo item
      *      500:
      *        description: Internal server error
      */
@@ -76,6 +76,22 @@ TodosRouter.route('/item/:id')
     catch (_c) {
         res.status(500).send('Could not delete');
     }
+}))
+    .patch((req, res) => __awaiter(this, void 0, void 0, function* () {
+    if (!req.params.id) {
+        res.status(400).send('Invalid request an id needs to be present');
+    }
+    if (!Number.parseInt(req.params.id, 10)) {
+        res.status(400).send('Invalid request an id needs to be an integer');
+    }
+    //TODO check the other parameters as well  
+    try {
+        yield TodosAPI_1.default.update(req.body.text, req.body.done, req.params.id);
+        res.status(200).send('Todo updated');
+    }
+    catch (_d) {
+        res.status(500).send('Could not update');
+    }
 }));
 TodosRouter.route('/new')
     .post((req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -86,7 +102,7 @@ TodosRouter.route('/new')
         yield TodosAPI_1.default.create(req.body.text);
         res.status(200).send('Todo created');
     }
-    catch (_d) {
+    catch (_e) {
         res.status(500).send('Could not create');
     }
 }));

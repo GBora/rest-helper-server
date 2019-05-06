@@ -37,9 +37,16 @@ class TodosAPI {
             });
         });
     }
-    static update(newData, id) {
+    static update(newTodo, newDone, id) {
         return new Promise((resolve, reject) => {
-            resolve(true);
+            console.log(`UPDATE TODOS SET TEXT = "${newTodo}", DONE = ${newDone} WHERE ID = ${id}`);
+            db.run(`UPDATE TODOS SET TEXT = "${newTodo}", DONE = ${newDone} WHERE ID = ${id}`, (err) => {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                }
+                resolve(true);
+            });
         });
     }
     static deleteById(id) {
