@@ -26,16 +26,39 @@ TodosRouter.route('/all')
 
 TodosRouter.route('/item/:id')
 /**
- * @swagger
- * /todos/item/:id:
- *  get:
- *    description: Return all todos
- *    responses:
- *      200:
- *        description: An single todo item
- *      500:
- *        description: Internal server error
- */
+* @swagger
+*  /todos/item/{id}:
+*  get: 
+*    description: "Return a todo"
+*    parameters: 
+*      - 
+*        description: "Numeric ID of the user to get"
+*        in: path
+*        name: id
+*        required: true
+*        schema: 
+*          type: integer
+*    responses: 
+*      200: 
+*        description: "Todo item"
+*      500: 
+*        description: "Internal server error"
+*  delete:
+*    description: "Deletes a single todo, use carefully it actually deletes"
+*    parameters: 
+*      - 
+*        description: "Numeric ID of the user to delete"
+*        in: path
+*        name: id
+*        required: true
+*        schema: 
+*          type: integer
+*    responses: 
+*      200: 
+*        description: "Message signifying succesfull deletetion"
+*      500: 
+*        description: "Internal server error"
+*/
            .get(async (req, res) => {
                 if (!req.params.id) {
                     res.status(400).send('Invalid request an id needs to be present')
