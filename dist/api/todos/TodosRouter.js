@@ -116,6 +116,27 @@ TodosRouter.route('/item/:id')
         res.status(500).send('Could not update');
     }
 }));
+/**
+ * @swagger
+ * /todos/new:
+ *  post:
+ *      description: "Posting a new todo"
+ *      requestBody:
+ *          description: "Text of new to do as json"
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      required: true
+ *      responses:
+ *          200:
+ *              description: "Message that todo was succesfully created"
+ *          400:
+ *              description: "Something was missing in the request"
+ *          500:
+ *              description: "Internal server error"
+ */
 TodosRouter.route('/new')
     .post((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.body.text && req.body.text.length > 1) {
