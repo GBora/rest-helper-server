@@ -16,4 +16,14 @@ UsersRouter.route('/username-available')
                 }
            })
 
+UsersRouter.route('/all')
+           .get(async (req, res) => {
+               try {
+                    let result = await UsersAPI.getAllUsers();
+                    res.send(result);
+               } catch {
+                   res.sendStatus(500);
+               }
+           })
+
 export default UsersRouter;

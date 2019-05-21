@@ -27,5 +27,15 @@ UsersRouter.route('/username-available')
         res.sendStatus(500);
     }
 }));
+UsersRouter.route('/all')
+    .get((req, res) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        let result = yield UsersAPI_1.default.getAllUsers();
+        res.send(result);
+    }
+    catch (_b) {
+        res.sendStatus(500);
+    }
+}));
 exports.default = UsersRouter;
 //# sourceMappingURL=UsersRouter.js.map

@@ -13,4 +13,15 @@ export default class UsersAPI {
             })
         })
     }
+
+    static getAllUsers(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            db.all('SELECT * FROM USERS ', (err, res) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(res);
+            })
+        })
+    }
 }

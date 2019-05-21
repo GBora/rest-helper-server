@@ -33,6 +33,24 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // End of documentation
 
 app.use(bodyParser.json());
+
+let customReplyMiddleware = async (req: any, res: any, next: any) => {
+    let code = Number.parseInt(req.headers['rest-response-code'], 10);
+    let delay = Number.parseInt(req.headers['rest-delay'], 10);
+
+    if (delay) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+    } 
+
+    if (code) {
+        res.sendStatus(code);
+    }
+
+    next();
+}
+
+app.use(customReplyMiddleware);
+
 app.use('/api', APIRouter);
 
 app.listen(process.env.PORT, () => {
