@@ -2,6 +2,7 @@ import express from 'express';
 import CarsRouter from './cars/CarsRouter';
 import UsersRouter from './users/UsersRouter';
 import TodosRouter from './todos/TodosRouter';
+import MessagesRouter from './messages/MessagesRouter';
 
 let APIRouter = express.Router({mergeParams: true});
 
@@ -23,5 +24,6 @@ APIRouter.get('/status', (req, res) => {
 APIRouter.use('/cars', CarsRouter);
 APIRouter.use('/users', UsersRouter);
 APIRouter.use('/todos', TodosRouter);
+APIRouter.use('/messages', MessagesRouter);
 
 export default APIRouter;

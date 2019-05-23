@@ -1,17 +1,17 @@
 # rest-helper-server
 
 This is a project that is intended to be an all batteries included REST-server which should be easy to setup (no configuration needed)
-and allows front end developers to quickly prototype javascript applications that heavily rely on getting their data from an REST endpoint 
+and allows front end developers to quickly prototype javascript applications that heavily rely on getting their data from an REST endpoint
 via ajax.
 
 It contains the following collections of endpoints:
 
+* messages (to try and build out a messager type application) DONE WITH INCOMPLETE SWAGGER
+* to-do's (a back-end for the classical learning example) DONE WITH INCOMPLETE SWAGGER
+* statuses (if you need to receive a particular status code) DONE AS MIDDLEWARE
+* delays (if you need to test what happens when the backend has delays) DONE AS MIDDLEWARE
 * cars (to suply cars to try out building a products/product view) IN PROGRESS
 * users (to allow to test out various login/logout/signup etc scenarios) IN PROGRESS
-* messages (to try and build out a messager type application) NOT STARTED
-* to-do's (a back-end for the classical learning example) DONE EXCEPT SWAGGER
-* statuses (if you need to receive a particular status code) NOT STARTED
-* delays (if you need to test what happens when the backend has delays or randomly crashes) NOT STARTED
 
 * Instalation and geting started
 
