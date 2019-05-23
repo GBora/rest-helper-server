@@ -17,7 +17,7 @@ It contains the following collections of endpoints:
 
 Just clone this and be sure you're on the `master` branch, then run `npm install` after everithing is completed run `npm start` to start the server and the typescript compilation.
 
-You should see in the console that the API itself is up on http://localhost:9010 and the swagger is on http://localhost:9010/api-docs .
+You should see in the console that the API itself is up on <http://localhost:9010> and the swagger is on <http://localhost:9010/api-docs> .
 
 The port mentioned is just the default it can be changed from the `.env` file.
 
