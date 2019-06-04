@@ -23,6 +23,7 @@ let app = express_1.default();
 dotenv_1.default.config();
 // Documentation
 const swaggerDefinition = {
+    // openapi: "3.0.0",
     info: {
         title: 'REST-HELPER',
         version: '1.0.0',

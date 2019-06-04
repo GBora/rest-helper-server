@@ -13,8 +13,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const TodosAPI_1 = __importDefault(require("./TodosAPI"));
-let TodosRouter = express_1.default.Router({ mergeParams: true });
-TodosRouter.route('/all')
+const TodosRouter = express_1.default.Router({ mergeParams: true });
+/**
+ * @swagger
+ * definitions:
+ *   Login:
+ *     required:
+ *       - username
+ *       - password
+ *     properties:
+ *       username:
+ *         type: string
+ *       password:
+ *         type: string
+ *       path:
+ *         type: string
+ */
+TodosRouter.route("/all")
     /**
      * @swagger
      * /todos/all:
@@ -28,14 +43,14 @@ TodosRouter.route('/all')
      */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
-        let todos = yield TodosAPI_1.default.getAll();
+        const todos = yield TodosAPI_1.default.getAll();
         res.status(200).send(todos);
     }
     catch (_a) {
-        res.status(500).send('Could not fetch all todos.');
+        res.status(500).send("Could not fetch all todos.");
     }
 }));
-TodosRouter.route('/item/:id')
+TodosRouter.route("/item/:id")
     /**
     * @swagger
     *  /todos/item/{id}:
@@ -72,48 +87,48 @@ TodosRouter.route('/item/:id')
     */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.params.id) {
-        res.status(400).send('Invalid request an id needs to be present');
+        res.status(400).send("Invalid request an id needs to be present");
     }
     if (!Number.parseInt(req.params.id, 10)) {
-        res.status(400).send('Invalid request an id needs to be an integer');
+        res.status(400).send("Invalid request an id needs to be an integer");
     }
     try {
-        let todo = yield TodosAPI_1.default.getById(req.params.id);
+        const todo = yield TodosAPI_1.default.getById(req.params.id);
         res.status(200).send(todo);
     }
     catch (_b) {
-        res.status(500).send('Could not fetch todo.');
+        res.status(500).send("Could not fetch todo.");
     }
 }))
     .delete((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.params.id) {
-        res.status(400).send('Invalid request an id needs to be present');
+        res.status(400).send("Invalid request an id needs to be present");
     }
     if (!Number.parseInt(req.params.id, 10)) {
-        res.status(400).send('Invalid request an id needs to be an integer');
+        res.status(400).send("Invalid request an id needs to be an integer");
     }
     try {
-        let result = yield TodosAPI_1.default.deleteById(req.params.id);
-        res.status(200).send('Todo deleted');
+        const result = yield TodosAPI_1.default.deleteById(req.params.id);
+        res.status(200).send("Todo deleted");
     }
     catch (_c) {
-        res.status(500).send('Could not delete');
+        res.status(500).send("Could not delete");
     }
 }))
     .patch((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.params.id) {
-        res.status(400).send('Invalid request an id needs to be present');
+        res.status(400).send("Invalid request an id needs to be present");
     }
     if (!Number.parseInt(req.params.id, 10)) {
-        res.status(400).send('Invalid request an id needs to be an integer');
+        res.status(400).send("Invalid request an id needs to be an integer");
     }
-    //TODO check the other parameters as well  
+    // TODO check the other parameters as well.
     try {
         yield TodosAPI_1.default.update(req.body.text, req.body.done, req.params.id);
-        res.status(200).send('Todo updated');
+        res.status(200).send("Todo updated");
     }
     catch (_d) {
-        res.status(500).send('Could not update');
+        res.status(500).send("Could not update");
     }
 }));
 /**
@@ -137,17 +152,17 @@ TodosRouter.route('/item/:id')
  *          500:
  *              description: "Internal server error"
  */
-TodosRouter.route('/new')
+TodosRouter.route("/new")
     .post((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.body.text && req.body.text.length > 1) {
         res.status(400).send('Property "text" required for end point ');
     }
     try {
         yield TodosAPI_1.default.create(req.body.text);
-        res.status(200).send('Todo created');
+        res.status(200).send("Todo created");
     }
     catch (_e) {
-        res.status(500).send('Could not create');
+        res.status(500).send("Could not create");
     }
 }));
 exports.default = TodosRouter;

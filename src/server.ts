@@ -12,6 +12,7 @@ dotenv.config();
 
 // Documentation
 const swaggerDefinition = {
+    // openapi: "3.0.0",
     info: {
         title: 'REST-HELPER', 
         version: '1.0.0',
