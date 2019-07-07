@@ -1,8 +1,8 @@
 {
   "name": "rest-helper-server",
-  "version": "0.0.5",
+  "version": "1.0.1",
   "description": "A server written in node to help with learning front end frameworks.",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "jest --watch",
     "coverage": "jest --coverage",

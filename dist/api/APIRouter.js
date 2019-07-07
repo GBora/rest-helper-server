@@ -8,7 +8,7 @@ const CarsRouter_1 = __importDefault(require("./cars/CarsRouter"));
 const UsersRouter_1 = __importDefault(require("./users/UsersRouter"));
 const TodosRouter_1 = __importDefault(require("./todos/TodosRouter"));
 const MessagesRouter_1 = __importDefault(require("./messages/MessagesRouter"));
-let APIRouter = express_1.default.Router({ mergeParams: true });
+const APIRouter = express_1.default.Router({ mergeParams: true });
 /**
  * @swagger
  * /status:
@@ -19,13 +19,13 @@ let APIRouter = express_1.default.Router({ mergeParams: true });
  *         content:
  *           description: Boolean indicating if api is up or not
  */
-APIRouter.get('/status', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.send({ 'is_up': true });
+APIRouter.get("/status", (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.send({ "is_up": true });
 });
-APIRouter.use('/cars', CarsRouter_1.default);
-APIRouter.use('/users', UsersRouter_1.default);
-APIRouter.use('/todos', TodosRouter_1.default);
-APIRouter.use('/messages', MessagesRouter_1.default);
+APIRouter.use("/cars", CarsRouter_1.default);
+APIRouter.use("/users", UsersRouter_1.default);
+APIRouter.use("/todos", TodosRouter_1.default);
+APIRouter.use("/messages", MessagesRouter_1.default);
 exports.default = APIRouter;
 //# sourceMappingURL=APIRouter.js.map

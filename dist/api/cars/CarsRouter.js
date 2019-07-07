@@ -13,8 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const CarsAPI_1 = __importDefault(require("./CarsAPI"));
-let CarsRouter = express_1.default.Router({ mergeParams: true });
-CarsRouter.route('/all')
+const CarsRouter = express_1.default.Router({ mergeParams: true });
+CarsRouter.route("/all")
     /**
      * @swagger
      * /cars/all:
@@ -33,14 +33,14 @@ CarsRouter.route('/all')
      */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
-        let cars = yield CarsAPI_1.default.getAll();
+        const cars = yield CarsAPI_1.default.getAll();
         res.send(cars);
     }
     catch (_a) {
         res.sendStatus(500);
     }
 }));
-CarsRouter.route('/:id')
+CarsRouter.route("/:id")
     /**
     * @swagger
     * /cars/id:
@@ -61,13 +61,13 @@ CarsRouter.route('/:id')
     */
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.params.id) {
-        res.status(400).send('ID required');
+        res.status(400).send("ID required");
     }
     if (!Number.parseInt(req.params.id, 10)) {
-        res.status(400).send('ID needs to be number');
+        res.status(400).send("ID needs to be number");
     }
     try {
-        let car = yield CarsAPI_1.default.getById(req.params.id);
+        const car = yield CarsAPI_1.default.getById(req.params.id);
         if (car) {
             res.send(car);
         }

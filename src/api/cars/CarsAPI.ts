@@ -1,6 +1,6 @@
-import sqlite3 from 'sqlite3';
+import sqlite3 from "sqlite3";
 
-let db = new sqlite3.Database('./db/rest-helper.db');
+const db = new sqlite3.Database("./db/rest-helper.db");
 
 class CarsAPI {
     static getAll(): Promise<any> {
@@ -10,8 +10,8 @@ class CarsAPI {
                     reject(err);
                 }
                 resolve(rows);
-            })
-        })
+            });
+        });
     }
     static getById(id: number): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -20,8 +20,8 @@ class CarsAPI {
                     reject(err);
                 }
                 resolve(row);
-            })
-        })
+            });
+        });
     }
 }
 

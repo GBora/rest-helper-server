@@ -1,29 +1,29 @@
-import express from 'express';
-import UsersAPI from './UsersAPI';
+import express from "express";
+import UsersAPI from "./UsersAPI";
 
-let UsersRouter = express.Router({mergeParams: true});
+const UsersRouter = express.Router({mergeParams: true});
 
-UsersRouter.route('/username-available')
+UsersRouter.route("/username-available")
            .post(async (req, res) => {
                 if (!req.body.username) {
-                    res.status(400).send('Parameter username required!');
+                    res.status(400).send("Parameter username required!");
                 }
                 try {
-                    let result = await UsersAPI.checkIfUsernameAvailable(req.body.username);
+                    const result = await UsersAPI.checkIfUsernameAvailable(req.body.username);
                     res.send(result);
                 } catch {
                     res.sendStatus(500);
                 }
-           })
+           });
 
-UsersRouter.route('/all')
+UsersRouter.route("/all")
            .get(async (req, res) => {
                try {
-                    let result = await UsersAPI.getAllUsers();
+                    const result = await UsersAPI.getAllUsers();
                     res.send(result);
                } catch {
                    res.sendStatus(500);
                }
-           })
+           });
 
 export default UsersRouter;

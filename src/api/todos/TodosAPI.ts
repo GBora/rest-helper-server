@@ -1,18 +1,18 @@
-import sqlite3 from 'sqlite3';
+import sqlite3 from "sqlite3";
 
-let db = new sqlite3.Database('./db/rest-helper.db');
+const db = new sqlite3.Database("./db/rest-helper.db");
 
 export default class TodosAPI {
 
     static getAll(): Promise<any> {
         return new Promise((resolve, reject) => {
-            db.all('SELECT * FROM TODOS', (err, rows) => {
+            db.all("SELECT * FROM TODOS", (err, rows) => {
                 if (err) {
                     reject(err);
                 }
                 resolve(rows);
-            })
-        })
+            });
+        });
     }
 
     static getById(id: number): Promise<any> {
@@ -22,8 +22,8 @@ export default class TodosAPI {
                     reject(err);
                 }
                 resolve(todo);
-            })
-        })
+            });
+        });
     }
 
     static create(newTodo: string): Promise<any> {
@@ -33,9 +33,9 @@ export default class TodosAPI {
                     console.error(err);
                     reject(err);
                 }
-                resolve(true)
-            })
-        })
+                resolve(true);
+            });
+        });
     }
 
     static update(newTodo: string, newDone: number, id: number): Promise<any> {
@@ -46,20 +46,20 @@ export default class TodosAPI {
                     console.error(err);
                     reject(err);
                 }
-                resolve(true)
-            })
-        })
+                resolve(true);
+            });
+        });
     }
-    
+
     static deleteById(id: number): Promise<any> {
         return new Promise((resolve, reject) => {
             db.run(`DELETE FROM TODOS WHERE ID = ${id}`, (err) => {
                 if (err) {
-                    reject(err)
+                    reject(err);
                 } else {
-                    resolve(true)
+                    resolve(true);
                 }
-            })
-        })
+            });
+        });
     }
 }

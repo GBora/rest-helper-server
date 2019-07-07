@@ -1,6 +1,6 @@
-import sqlite3 from 'sqlite3';
+import sqlite3 from "sqlite3";
 
-let db = new sqlite3.Database('./db/rest-helper.db');
+const db = new sqlite3.Database("./db/rest-helper.db");
 
 export default class UsersAPI {
     static checkIfUsernameAvailable(username: string): Promise<boolean> {
@@ -9,19 +9,19 @@ export default class UsersAPI {
                 if (err) {
                     reject(err);
                 }
-                resolve(res['COUNT(*)'] === 0);
-            })
-        })
+                resolve(res["COUNT(*)"] === 0);
+            });
+        });
     }
 
     static getAllUsers(): Promise<any> {
         return new Promise((resolve, reject) => {
-            db.all('SELECT * FROM USERS ', (err, res) => {
+            db.all("SELECT * FROM USERS ", (err, res) => {
                 if (err) {
                     reject(err);
                 }
                 resolve(res);
-            })
-        })
+            });
+        });
     }
 }

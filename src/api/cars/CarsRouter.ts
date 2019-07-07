@@ -1,9 +1,9 @@
-import express from 'express';
-import CarsAPI from './CarsAPI';
+import express from "express";
+import CarsAPI from "./CarsAPI";
 
-let CarsRouter = express.Router({mergeParams: true});
+const CarsRouter = express.Router({mergeParams: true});
 
-CarsRouter.route('/all')
+CarsRouter.route("/all")
           /**
            * @swagger
            * /cars/all:
@@ -22,14 +22,14 @@ CarsRouter.route('/all')
            */
           .get(async (req, res) => {
             try {
-              let cars = await CarsAPI.getAll();
+              const cars = await CarsAPI.getAll();
               res.send(cars);
             } catch {
               res.sendStatus(500);
             }
-          })
+          });
 
-CarsRouter.route('/:id')
+CarsRouter.route("/:id")
           /**
           * @swagger
           * /cars/id:
@@ -50,15 +50,15 @@ CarsRouter.route('/:id')
           */
           .get(async (req, res) => {
             if (!req.params.id) {
-              res.status(400).send('ID required')
+              res.status(400).send("ID required");
             }
 
             if (!Number.parseInt(req.params.id, 10)) {
-              res.status(400).send('ID needs to be number')
+              res.status(400).send("ID needs to be number");
             }
-            
+
             try {
-              let car = await CarsAPI.getById(req.params.id);
+              const car = await CarsAPI.getById(req.params.id);
               if (car) {
                 res.send(car);
               } else {
@@ -67,6 +67,6 @@ CarsRouter.route('/:id')
             } catch {
               res.sendStatus(500);
             }
-          })
+          });
 
 export default CarsRouter;

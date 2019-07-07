@@ -1,6 +1,6 @@
-import sqlite3 from 'sqlite3';
+import sqlite3 from "sqlite3";
 
-let db = new sqlite3.Database('./db/rest-helper.db');
+const db = new sqlite3.Database("./db/rest-helper.db");
 
 export default class MessagesAPI {
     static getConversationBetween(user1Id: number, user2Id: number): Promise<any> {
@@ -10,7 +10,7 @@ export default class MessagesAPI {
                     reject(err);
                 }
                 resolve(res);
-            })
-        })
+            });
+        });
     }
 }

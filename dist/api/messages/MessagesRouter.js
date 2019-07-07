@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const MessagesAPI_1 = __importDefault(require("./MessagesAPI"));
-let MessagesRouter = express_1.default.Router({ mergeParams: true });
-MessagesRouter.route('/conversation/:user1/:user2')
+const MessagesRouter = express_1.default.Router({ mergeParams: true });
+MessagesRouter.route("/conversation/:user1/:user2")
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
-        let messages = yield MessagesAPI_1.default.getConversationBetween(req.params.user1, req.params.user2);
+        const messages = yield MessagesAPI_1.default.getConversationBetween(req.params.user1, req.params.user2);
         if (messages) {
             res.send(messages);
         }

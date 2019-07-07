@@ -19,30 +19,30 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 // Internal depencies
 const APIRouter_1 = __importDefault(require("./api/APIRouter"));
-let app = express_1.default();
+const app = express_1.default();
 dotenv_1.default.config();
 // Documentation
 const swaggerDefinition = {
     // openapi: "3.0.0",
     info: {
-        title: 'REST-HELPER',
-        version: '1.0.0',
-        description: 'A API to help test out FE frameworks',
+        title: "REST-HELPER",
+        version: "1.0.1",
+        description: "A API to help test out FE frameworks",
     },
     host: `localhost:${process.env.PORT}`,
-    basePath: '/api',
+    basePath: "/api",
 };
 const options = {
     swaggerDefinition,
-    apis: ['./src/**/*.ts'],
+    apis: ["./src/**/*.ts"],
 };
 const swaggerSpec = swagger_jsdoc_1.default(options);
-app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
+app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerSpec));
 // End of documentation
 app.use(body_parser_1.default.json());
-let customReplyMiddleware = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
-    let code = Number.parseInt(req.headers['rest-response-code'], 10);
-    let delay = Number.parseInt(req.headers['rest-delay'], 10);
+const customReplyMiddleware = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+    const code = Number.parseInt(req.headers["rest-response-code"], 10);
+    const delay = Number.parseInt(req.headers["rest-delay"], 10);
     if (delay) {
         yield new Promise(resolve => setTimeout(resolve, delay));
     }
@@ -52,7 +52,7 @@ let customReplyMiddleware = (req, res, next) => __awaiter(this, void 0, void 0, 
     next();
 });
 app.use(customReplyMiddleware);
-app.use('/api', APIRouter_1.default);
+app.use("/api", APIRouter_1.default);
 app.listen(process.env.PORT, () => {
     console.log(`App is online at http://localhost:${process.env.PORT}/ \n Swagger is available at http://localhost:${process.env.PORT}/api-docs`);
 });

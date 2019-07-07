@@ -13,24 +13,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const UsersAPI_1 = __importDefault(require("./UsersAPI"));
-let UsersRouter = express_1.default.Router({ mergeParams: true });
-UsersRouter.route('/username-available')
+const UsersRouter = express_1.default.Router({ mergeParams: true });
+UsersRouter.route("/username-available")
     .post((req, res) => __awaiter(this, void 0, void 0, function* () {
     if (!req.body.username) {
-        res.status(400).send('Parameter username required!');
+        res.status(400).send("Parameter username required!");
     }
     try {
-        let result = yield UsersAPI_1.default.checkIfUsernameAvailable(req.body.username);
+        const result = yield UsersAPI_1.default.checkIfUsernameAvailable(req.body.username);
         res.send(result);
     }
     catch (_a) {
         res.sendStatus(500);
     }
 }));
-UsersRouter.route('/all')
+UsersRouter.route("/all")
     .get((req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
-        let result = yield UsersAPI_1.default.getAllUsers();
+        const result = yield UsersAPI_1.default.getAllUsers();
         res.send(result);
     }
     catch (_b) {

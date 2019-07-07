@@ -1,10 +1,10 @@
-import express from 'express';
-import CarsRouter from './cars/CarsRouter';
-import UsersRouter from './users/UsersRouter';
-import TodosRouter from './todos/TodosRouter';
-import MessagesRouter from './messages/MessagesRouter';
+import express from "express";
+import CarsRouter from "./cars/CarsRouter";
+import UsersRouter from "./users/UsersRouter";
+import TodosRouter from "./todos/TodosRouter";
+import MessagesRouter from "./messages/MessagesRouter";
 
-let APIRouter = express.Router({mergeParams: true});
+const APIRouter = express.Router({mergeParams: true});
 
 /**
  * @swagger
@@ -16,14 +16,14 @@ let APIRouter = express.Router({mergeParams: true});
  *         content:
  *           description: Boolean indicating if api is up or not
  */
-APIRouter.get('/status', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.send({'is_up': true})
+APIRouter.get("/status", (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.send({"is_up": true});
 });
 
-APIRouter.use('/cars', CarsRouter);
-APIRouter.use('/users', UsersRouter);
-APIRouter.use('/todos', TodosRouter);
-APIRouter.use('/messages', MessagesRouter);
+APIRouter.use("/cars", CarsRouter);
+APIRouter.use("/users", UsersRouter);
+APIRouter.use("/todos", TodosRouter);
+APIRouter.use("/messages", MessagesRouter);
 
 export default APIRouter;
