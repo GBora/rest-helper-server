@@ -41,6 +41,14 @@ MIT
 `npm start`:  begins both a compilation of the typescript sources to javascript and runs the compiled javascript
 so that the server is up, once this command runs your code will recompile and the server will restart.
 
+## Non swagger end-points
+
+Until I can migrate to openapi version 3 the following end point will not appear in the swagger but is available to
+be called.
+
+The url is for example `http://localhost:9010/api/todos/new` with the new to do item to be sent as an object in the body
+`{ "text": "Hello World" }`.
+
 ## To Do List
 
-* update swagger
+* update swagger to openapi 3 which involves changing all the configuarions
